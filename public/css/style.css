@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: rgba(157, 196, 197, 0.918);
+}
+.form-login{
+    margin-top: 3%;
+    text-align: center;
+    
+}
+#name,#password,#email{
+    margin: 1%;
+    padding: 1%;
+    width: 30%;
+}
+#btn-login{
+    margin: 1%;
+    padding: 1%;
+    width: 20%;
+    border-radius: 20px;
+    background: rgb(235, 136, 136);
+}
+#profile{
+    width: 10%;
+    
+    border-radius: 50%;
+}
