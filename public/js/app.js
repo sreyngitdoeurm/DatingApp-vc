@@ -1,14 +1,12 @@
 
-
-
-let ip="192.168.2.11";
+let ip="192.168.1.22";
 let PORT=5000;
 const getLoginRequest = "http://" + ip + ":" + PORT + "/login";
 
 function requestLogin(event){
     event.preventDefault();
 
-    let url = getLoginRequest + "?username=" + username.value  + "&password=" + password.value + "&emailOrphonenumber" + email.value;
+    let url = getLoginRequest + "?username=" + username.value  + "&password=" + password.value + "&emailOrphonenumber=" + email.value;
 
 
     axios
