@@ -24,23 +24,5 @@ body{
     width: 10%;
     border-radius: 50%;
 }
-.form-signIn{
-    margin-top: 3%;
-    text-align: center;  
-}
-
-#userNameSignIn,#emailSignIn,#passwordSignIn{
-    margin: 1%;
-    padding: 1%;
-    width: 31%;
-}
-
-#btn-signIn, #btn-back{
-    margin: 1%;
-    padding: 1%;
-    width: 10%;
-    border-radius: 20px;
-    background: rgb(77, 174, 219);
-}
 
 

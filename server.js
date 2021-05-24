@@ -27,28 +27,4 @@ app.get('/login', (req, res)=>{
         }
     }
     res.send(loginUser);
-    
-})
-
-app.post('/login', (req, res) => {
-    let userSignIn = req.query.username;
-    let emailSignIn = req.query.emailOrphonenumber;
-    let passwordSignIn = req.query.password;
-    let signInUser = false;
-    let newUser = {
-        name: userSignIn,
-        password: passwordSignIn,
-        emailOrphoneNumber: emailSignIn,  
-    }
-    
-    for (let user of users){
-        if (emailSignIn === user.emailOrphoneNumber){
-            signInUser = true;
-            
-        }
-    }
-    
-    res.send(signInUser);
-    
-    
 })
