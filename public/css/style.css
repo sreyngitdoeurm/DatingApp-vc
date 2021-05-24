@@ -13,14 +13,34 @@ body{
     padding: 1%;
     width: 30%;
 }
-#btn-login{
+#btn-login,#btn-signin{
     margin: 1%;
     padding: 1%;
-    width: 20%;
+    width: 10%;
     border-radius: 20px;
-    background: rgb(235, 136, 136);
+    background: rgb(77, 174, 219);
 }
 #profile{
     width: 10%;
     border-radius: 50%;
 }
+.form-signIn{
+    margin-top: 3%;
+    text-align: center;  
+}
+
+#userNameSignIn,#emailSignIn,#passwordSignIn{
+    margin: 1%;
+    padding: 1%;
+    width: 31%;
+}
+
+#btn-signIn, #btn-back{
+    margin: 1%;
+    padding: 1%;
+    width: 10%;
+    border-radius: 20px;
+    background: rgb(77, 174, 219);
+}
+
+
