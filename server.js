@@ -25,12 +25,15 @@ app.get('/signin', (req,res) =>{
             odj.username=username;
             odj.password=password;
             odj.email=email;
-            array.push(odj);
+           
         }
         
     }
+    if (notSign){
+        array.splice(0,1,odj);
+    }
     res.send(notSign);
-    // fs.writeFileSync('userAcc.json', JSON.stringify(array));
+    fs.writeFileSync('userAcc.json', JSON.stringify(array));
 
     console.log(array);
 })
@@ -54,4 +57,4 @@ app.get('/login', (req, res)=>{
 
 let users=JSON.parse(fs.readFileSync('userAcc.json'))
 
-
+console.log(users);

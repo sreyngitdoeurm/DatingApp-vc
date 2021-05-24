@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
 let ip="localhost";
-=======
-let ip="192.168.2.29";
->>>>>>> 2740d943dd8008f5817b33739035e536c1ca5ba6
 let PORT=5000;
 const getLoginRequest = "http://" + ip + ":" + PORT + "/login";
 const getSigningRequest = "http://" + ip + ":" + PORT + "/signin";
@@ -14,13 +10,8 @@ formInfo.style.display='none';
 
 function requestLogin(event){
     event.preventDefault();
-<<<<<<< HEAD
     
     let url = getLoginRequest + "?username=" + username.value  + "&password=" + password.value + "&emai=" + email.value;
-=======
-
-    let url = getLoginRequest + "?username=" + username.value  + "&password=" + password.value + "&emailOrphonenumber=" + email.value;
->>>>>>> 2740d943dd8008f5817b33739035e536c1ca5ba6
     axios
         .get(url)
         .then((response) =>{
@@ -37,7 +28,6 @@ function requestLogin(event){
                 formInfo.style.display='flex';
             }
         });
-<<<<<<< HEAD
     
 }
 // ------------------------------------------------------form sign in---------------------------------------------
@@ -60,8 +50,6 @@ function singIn(event){
             
             
         });
-=======
->>>>>>> 2740d943dd8008f5817b33739035e536c1ca5ba6
 }
 
 // ------------------------------------------------------form information---------------------------------------------
@@ -73,15 +61,9 @@ const password = document.querySelector("#password");
 const message = document.querySelector(".text");
 
 const bntLogin = document.querySelector("#btn-login");
-<<<<<<< HEAD
 const btnSignin=document.querySelector('#btn-signin');
 
 bntLogin.addEventListener("click", requestLogin);
 btnSignin.addEventListener('click', singIn);
 
-=======
-bntLogin.addEventListener("click", requestLogin);
-
-
->>>>>>> 2740d943dd8008f5817b33739035e536c1ca5ba6
 
