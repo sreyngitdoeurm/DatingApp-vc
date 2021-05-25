@@ -19,8 +19,9 @@ app.get('/signin', (req,res) =>{
     
     let odj={};    
     for (let user of users){
-        if (user.name===username && user.password===password && user.email===email){
+        if (user.username===username && user.password===password && user.email===email){
             notSign=false;
+            array=users;
         }else{
             odj.username=username;
             odj.password=password;
@@ -30,7 +31,11 @@ app.get('/signin', (req,res) =>{
         
     }
     if (notSign){
-        array.splice(0,1,odj);
+        for ( let user of users){
+            array.push(user);
+        }
+        
+        array.push(odj);
     }
     res.send(notSign);
     fs.writeFileSync('userAcc.json', JSON.stringify(array));
@@ -43,7 +48,7 @@ app.get('/login', (req, res)=>{
     let email=req.query.email;
     let loginUser=false;
     for (let user of users){
-        if (user.name===username && user.password===password && user.email===email){
+        if (user.username===username && user.password===password && user.email===email){
             loginUser=true;
         }
     }
