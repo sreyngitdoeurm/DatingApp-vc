@@ -7,26 +7,34 @@ body{
 .form-login{
     margin-top: 3%;
     text-align: center;
+    background: cornflowerblue;
+    border: solid 1px;
+    width: 30%;
+    height: 500px;
+    margin-left: 35%;
     
     
 }
 #name,#password,#email{
-    margin: 1%;
-    padding: 1%;
-    width: 30%;
+    margin: 2%;
+    padding: 4%;
+    width: 70%;
 }
 #btn-login,#btn-signin{
-    margin: 1%;
-    padding: 1%;
-    width: 10%;
+    margin: 2%;
+    padding: 2%;
+    width: 30%;
     border-radius: 20px;
-    background: rgb(77, 174, 219);
+    background: rgb(245, 176, 239);
+    border: none;
 }
-#profile{
-    width: 10%;
+#logo{
+    width: 30%;
     border-radius: 50%;
+    background: rgb(230, 218, 218);
+    margin-top: 3%;
 }
-/* ---------------------------------------------form infomation----------------------------------- */
+/* ---------------------------------------------dispay friends----------------------------------- */
 .form-info{
     display: flex;
     height: 576px;
@@ -36,5 +44,82 @@ body{
     padding: 1%;
     background: rgb(221, 245, 247);
     width: 30%;
+    overflow: scroll;
+    
+}
+#search{
+    width: 70%;
+    padding: 2%;
+}
+ul {
+    list-style-type: none;
+    padding: 5px;
+}
+li {
+    padding: 5px;
+    margin-top: 10px;
+    background: rgb(176, 225, 240);
+    
+}
+/*-----------------------------------------------------------------form chat------------------- */
+#profile,
+#header-profile,
+#friend-acc{
+    width: 40px;
+    border-radius: 50%;
+}
+.messager{
+    width: 60%;
+}
+#message-place{
+    width: 70%;
+    height: 40px;
+}
+.header{
+    width: 100%;
+    background: white;
+    position: absolute;
+    
+}
+
+
+#icon-send,
+#icon-attach,
+#sticker,
+#icon-micro,
+#icon-bold,
+#icon-italic{
+    width: 3%;
+    height: 1%;
+    border-radius: 50%;
+    background: rgb(226, 221, 221);
+    padding: 1%;
+}
+.name{
+    padding: 1%;
+}
+
+
+.footer{
+    display: flex;
+    position: absolute;
+    bottom: 1%;
+    justify-content: space-around; 
+    margin-right: 2%;
+    
+    
+    
+}
+.body-box{
+    background: rgb(53, 179, 184);
+    height: 70%;
+    overflow: auto;
+    margin-top: 10%;
+}
+.tex{
+    background: white;
+    width: 300px;
+    padding: 2px;
+    margin: 1%;
     
 }

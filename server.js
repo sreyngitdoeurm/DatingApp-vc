@@ -1,5 +1,6 @@
 const fs=require('fs');
 const express = require('express');
+const e = require('express');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.get('/signin', (req,res) =>{
     let email=req.query.email;
     let notSign=true;
     
-    let odj={};    
+    let odj={};  
     for (let user of users){
         if (user.username===username && user.password===password && user.email===email){
             notSign=false;
@@ -55,11 +56,13 @@ app.get('/login', (req, res)=>{
     res.send(loginUser);
     
     
+    
 })
-
-
-
+app.get('/users', (req,res) =>{
+    res.send(users);
+})
 
 let users=JSON.parse(fs.readFileSync('userAcc.json'))
 
-console.log(users);
+
+
