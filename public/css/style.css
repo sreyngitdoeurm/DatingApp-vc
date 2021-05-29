@@ -69,15 +69,15 @@ li {
     border-radius: 50%;
 }
 .messager{
-    width: 60%;
+    width: 70%;
 }
 #message-place{
-    width: 70%;
+    width: 60%;
     height: 40px;
 }
 .header{
     width: 100%;
-    background: white;
+    background: rgb(221, 198, 198);
     position: absolute;
     
 }
@@ -95,9 +95,9 @@ li {
     background: rgb(226, 221, 221);
     padding: 1%;
 }
-.name{
+/* .name{
     padding: 1%;
-}
+} */
 
 
 .footer{
@@ -112,9 +112,10 @@ li {
 }
 .body-box{
     background: rgb(53, 179, 184);
-    height: 70%;
+    height: 85%;
     overflow: auto;
-    margin-top: 10%;
+    margin-top: 3%;
+    
 }
 .tex{
     background: white;
