@@ -1,149 +1,69 @@
 
-
-let ip="localhost";
-let PORT=5000;
-const getLoginRequest = "http://" + ip + ":" + PORT + "/login";
-const getSigningRequest = "http://" + ip + ":" + PORT + "/signin";
-
-// ----------------------------------------------search----------------------------------
-let btn_search=document.querySelector('#btn-search');
-let searchBox=document.querySelector('#search');
-
-function searchFriend(event){
-    let text=searchBox.value.toLowerCase();
-    let items=document.querySelectorAll('li');
-    for (let item of items){
-        let name=item.firstElementChild.textContent.toLowerCase();
-        if (name.indexOf(text) >-1 ){
-            item.style.display='';
+let ip="192.168.43.142";
+let PORT=4000;
+const url = "http://" + ip + ":" + PORT;
+// -------------------------------------------------------------message---------------------
+// time to send and recieve 
+function showMessage(message_data){
+    body_box.firstElementChild.remove();
+    let message_container = document.createElement("div");
+    message_container.className = "message_container";
+    for(data of message_data){
+        let message_data = document.createElement("p");
+        message_data.className = "message_data";
+        message_data.textContent = data.message;
+        if(data.username === localStorage.getItem("username")){
+            let message_incoming = document.createElement("div");
+            message_incoming.className = "message_incoming";
+            let me = document.createElement("p");
+            me.className = "me";
+            message_data.style.background = "aliceblue"
+            me.textContent = localStorage.getItem("username");
+            message_incoming.appendChild(me);
+            message_incoming.appendChild(message_data);
+            message_container.appendChild(message_incoming);
         }else{
-            item.style.display='none';
+            let message_outgoing = document.createElement("div");
+            message_outgoing.className = "message_outgoing";
+            let other = document.createElement("p");
+            other.className = "other";
+            message_data.style.background = "yellow"
+            other.textContent = data.username;
+            message_outgoing.appendChild(other);
+            message_outgoing.appendChild(message_data);
+            message_container.appendChild(message_outgoing);
         }
+        body_box.appendChild(message_container);
     }
-    
 }
-const friendName=document.querySelector('#friend-name');
-let clickOn = (event) =>{    
-    
-    let name=event.target.childNodes[1].textContent;
-    friendName.textContent=name;
-
-    // let messager=document.querySelector('.messager');
-    
-
-    
-    // // ----------body------------------------
-    // let bodyBox=document.createElement('div');
-    // bodyBox.className='body-box';
-
-    // let p=document.createElement('p');
-    // p.className='p';
-    // bodyBox.appendChild(p);
-}
-// -------------------------------------------------------display friends account------------
-let ul=document.querySelector('ul');
-function usersInfo(response){
-    function loadData(){
-        let getUserdata=JSON.parse(localStorage.getItem("userData"));
-        let userName=getUserdata[0].username;
-        let pass=getUserdata[0].password;
-        let eM=getUserdata[0].email;
-        console.log(getUserdata[0]);
-        
-        for (let user of response.data){
-            console.log(user);
-            if ( !(user.username===userName && user.password===pass && user.email===eM)){
-                let userName=user.username;
-                let li=document.createElement('li');
-                let image=document.createElement('img');
-                image.id='friend-acc';
-                image.src='./images/images.png'
-                let firstSpan=document.createElement('span');
-                firstSpan.className='name';
-                firstSpan.textContent=userName;
-                li.appendChild(image);
-                li.appendChild(firstSpan);
-                ul.appendChild(li);  
-
-            }
-              
-        }
-        let li=document.querySelectorAll('li');
-        for(value of li){
-            value.addEventListener('click', clickOn);
-        } 
+function sendMessage (){
+    let new_message = {
+        username: localStorage.getItem("username"),
+        message: message_place.value
     }
-    loadData();
+    axios.post("/add",new_message).then( (response)=>{
+        console.log(response.data);
+    });
+    message_place.value = "";
 }
-
-
-
-let requestUsers='http://localhost:5000/users';
-axios
-    .get(requestUsers)
-    .then(usersInfo)
-
-btn_search.addEventListener('click', searchFriend);
-
-
-// ------------------------------------------------------form Message---------------------------------------------
-let bod=document.querySelector('.body-box');
-let messagePlace=document.querySelector('#message-place');
-let italic=document.querySelector('#icon-italic');
-let bold=document.querySelector(('#icom-bold'));
-let sent=document.querySelector('#icon-send');
-console.log(sent);
-function boldText(event){
-    let span=document.createElement('ul');
-    span.id='text';
-    span.textContent=messagePlace.value;
-    span.style.fontStyle="italic";
-    para.appendChild(span);
+function loadData(){
+    axios.get(url + "/getdata").then( (response)=>{
+        let message_data = response.data;
+        showMessage(message_data)
+    })
 }
-function italicText(event){
-    let span=document.createElement('ul');
-    span.id='text';
-    span.textContent=messagePlace.value;
-    span.style.fontStyle="bold";
-    para.appendChild(span);
-    
-}
-function sentMessage(event){
-    let userProfile=document.querySelector('#user-name');
-    function loadData(){
-        let getUserdata=JSON.parse(localStorage.getItem("userData"));
-        let user=getUserdata[0].username;
-        let text=document.createElement('div');
-        text.className='tex';
-        let para=document.createElement('p');
-        para.textContent=user +" : " +messagePlace.value;
-        text.appendChild(para);
-        bod.appendChild(text);
-
-        messagePlace.value='';
-        
-    }
-
-    
-    
-
-    loadData();
-}
-
-
-sent.addEventListener('click', sentMessage);
-
-italic.addEventListener('click', italicText);
-
+// LOARD DATA 
+setInterval(loadData, 200);
+// get button and user account name and body-box and message place: 
+let message_place = document.querySelector("#message-place");
+let body_box = document.querySelector(".body-box");
+let user_account_name = document.querySelector("#friend-name");
+user_account_name.textContent = localStorage.getItem("username");
+let btn_send = document.querySelector("#icon-send");
+btn_send.addEventListener("click", sendMessage);
 
 
 //  MAIN========================================
-let userProfile=document.querySelector('#user-name');
-function loadData(){
-    let getUserdata=JSON.parse(localStorage.getItem("userData"));
-    userProfile.textContent=getUserdata[0].username;
-    
-    
-}
-
-loadData();
+const username = document.querySelector("#name");
+const email = document.querySelector("#email");
+const password = document.querySelector("#password");

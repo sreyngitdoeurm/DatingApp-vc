@@ -1,24 +1,26 @@
 {
-  "name": "DatingApp-vc",
+  "name": "datingapp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
   "scripts": {
-    "start": "nodemon server.js"
+    "test": "y",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sreyngitdoeurm/DatingApp-vc.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sreyngitdoeurm/DatingApp-vc/issues"
   },
-  "homepage": "https://github.com/sreyngitdoeurm/DatingApp-vc#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.7"
-  }
+  "homepage": "https://github.com/sreyngitdoeurm/DatingApp-vc#readme"
 }

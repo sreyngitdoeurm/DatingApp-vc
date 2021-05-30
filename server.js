@@ -1,68 +1,32 @@
 const fs=require('fs');
 const express = require('express');
-const e = require('express');
+
 
 const app = express();
-
-app.listen(process.env.PORT || 5000, () => console.log("Server running..."));
+app.listen(process.env.PORT || 4000, () => console.log("Server running..."));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static('public'));
 
-
-app.get('/', (req, res) => res.send("Hello Project"))
-let array=[];
-app.get('/signin', (req,res) =>{
-    let username=req.query.username;
-    let password=req.query.password;
-    let email=req.query.email;
-    let notSign=true;
-    
-    let odj={};  
-    for (let user of users){
-        if (user.username===username && user.password===password && user.email===email){
-            notSign=false;
-            array=users;
-        }else{
-            odj.username=username;
-            odj.password=password;
-            odj.email=email;
-           
+let userAcc = JSON.parse(fs.readFileSync("userAcc.json"));
+// LOGIN REQUEST:
+app.post("/login", (req, res) =>{
+    let userThat_login = req.body;
+    let is_can_login = false;
+    for (user of userAcc){
+        if(user.email === userThat_login.mail && user.username === userThat_login.userAccount && user.password === userThat_login.password){
+            is_can_login = true;
         }
-        
-    }
-    if (notSign){
-        for ( let user of users){
-            array.push(user);
-        }
-        
-        array.push(odj);
-    }
-    res.send(notSign);
-    fs.writeFileSync('userAcc.json', JSON.stringify(array));
-
-    console.log(array);
+    };
+    res.send(is_can_login);
 })
-app.get('/login', (req, res)=>{
-    let username=req.query.username;
-    let password=req.query.password;
-    let email=req.query.email;
-    let loginUser=false;
-    for (let user of users){
-        if (user.username===username && user.password===password && user.email===email){
-            loginUser=true;
-        }
-    }
-    res.send(loginUser);
-    
-    
-    
-})
-app.get('/users', (req,res) =>{
-    res.send(users);
-})
-
-let users=JSON.parse(fs.readFileSync('userAcc.json'))
-
-
-
+// GET ALL MESSAGE:
+let data =JSON.parse(fs.readFileSync("text.json",));
+app.get("/getdata", (req, res) =>{
+    res.send(data);
+});
+// ADD DATA: 
+app.post("/add", (req, res)=>{
+    data.push(req.body)
+    fs.writeFileSync("text.json",JSON.stringify(data));
+});
