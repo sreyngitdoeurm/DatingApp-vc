@@ -1,7 +1,7 @@
 
-// let url="https://dating-app-vc.herokuapp.com";
+let url="https://dating-app-vc.herokuapp.com";
 let PORT=4000;
-const url = "http://192.168.43.142:" + PORT;
+// const url = "http://192.168.43.142:" + PORT;
 // -------------------------------------------------------------message---------------------
 // time to send and recieve 
 function showMessage(message_data){
@@ -41,7 +41,7 @@ function sendMessage (){
         username: localStorage.getItem("username"),
         message: message_place.value
     }
-    axios.post("/add",new_message).then( (response)=>{
+    axios.post(url+"/add",new_message).then( (response)=>{
         console.log(response.data);
     });
     message_place.value = "";

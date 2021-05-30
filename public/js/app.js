@@ -1,8 +1,8 @@
 
 
-// let url="https://dating-app-vc.herokuapp.com";
+let url="https://dating-app-vc.herokuapp.com";
 let PORT=4000;
-let url = "http://192.168.43.142:" + PORT;
+// let url = "http://192.168.43.142:" + PORT;
 
 // ------------------------------------------------------login form------------------------------------------------------------------------
 function login(){
