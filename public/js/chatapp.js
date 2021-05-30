@@ -1,7 +1,7 @@
 
-let ip="https://dating-app-vc.herokuapp.com/";
+// let url="https://dating-app-vc.herokuapp.com";
 let PORT=4000;
-const url = "http://" + ip + ":" + PORT;
+const url = "http://192.168.43.142:" + PORT;
 // -------------------------------------------------------------message---------------------
 // time to send and recieve 
 function showMessage(message_data){

@@ -1,8 +1,8 @@
 
 
-let ip="https://dating-app-vc.herokuapp.com/";
+// let url="https://dating-app-vc.herokuapp.com";
 let PORT=4000;
-let url = "http://" + ip + ":" + PORT;
+let url = "http://192.168.43.142:" + PORT;
 
 // ------------------------------------------------------login form------------------------------------------------------------------------
 function login(){
@@ -34,6 +34,6 @@ const message = document.querySelector(".text");
 const bntLogin = document.querySelector("#btn-login");
 const btnSignin=document.querySelector('#btn-signin');
 bntLogin.addEventListener("click",login);
-btnSignin.addEventListener('click', signup);
+
 
 
