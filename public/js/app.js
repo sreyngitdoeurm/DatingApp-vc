@@ -1,6 +1,6 @@
 
 
-let ip="192.168.43.142";
+let ip="https://dating-app-vc.herokuapp.com/";
 let PORT=4000;
 let url = "http://" + ip + ":" + PORT;
 
